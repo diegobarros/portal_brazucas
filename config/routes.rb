@@ -1,4 +1,6 @@
 PortalBrazucas::Application.routes.draw do
+  devise_for :usuarios
+
   get "home/index"
 
   ActiveAdmin.routes(self)
