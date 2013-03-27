@@ -1,0 +1,38 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (15.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (109.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateAdminUsers (20130327013918)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (178.0ms)[0m  [1mCREATE TABLE "admin_users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (127.0ms)[0m  CREATE UNIQUE INDEX "index_admin_users_on_email" ON "admin_users" ("email")
+  [1m[36m (72.0ms)[0m  [1mCREATE UNIQUE INDEX "index_admin_users_on_reset_password_token" ON "admin_users" ("reset_password_token")[0m
+  [1m[35mAdminUser Exists (1.0ms)[0m  SELECT 1 AS one FROM "admin_users" WHERE "admin_users"."email" = 'admin@example.com' LIMIT 1
+  [1m[36mSQL (101.9ms)[0m  [1mINSERT INTO "admin_users" ("created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "last_sign_in_at", "last_sign_in_ip", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["created_at", Wed, 27 Mar 2013 01:45:46 UTC +00:00], ["current_sign_in_at", nil], ["current_sign_in_ip", nil], ["email", "admin@example.com"], ["encrypted_password", "$2a$10$BVyuLLGayF0FzC2e3L09A.YKeujKH0U3bqTzL0nrPeluOridwpNP2"], ["last_sign_in_at", nil], ["last_sign_in_ip", nil], ["remember_created_at", nil], ["reset_password_sent_at", nil], ["reset_password_token", nil], ["sign_in_count", 0], ["updated_at", Wed, 27 Mar 2013 01:45:46 UTC +00:00]]
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130327013918')
+  [1m[36m (72.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAdminNotes (20130327013923)
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36m (248.5ms)[0m  [1mCREATE TABLE "admin_notes" ("id" serial primary key, "resource_id" character varying(255) NOT NULL, "resource_type" character varying(255) NOT NULL, "admin_user_id" integer, "admin_user_type" character varying(255), "body" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (74.0ms)[0m  CREATE INDEX "index_admin_notes_on_resource_type_and_resource_id" ON "admin_notes" ("resource_type", "resource_id")
+  [1m[36m (106.9ms)[0m  [1mCREATE INDEX "index_admin_notes_on_admin_user_type_and_admin_user_id" ON "admin_notes" ("admin_user_type", "admin_user_id")[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130327013923')
+  [1m[36m (49.7ms)[0m  [1mCOMMIT[0m
+Migrating to MoveAdminNotesToComments (20130327013924)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.6ms)[0m  [1mDROP INDEX "index_admin_notes_on_admin_user_type_and_admin_user_id"[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "admin_notes" RENAME TO "active_admin_comments"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "admin_notes_id_seq" RENAME TO "active_admin_comments_id_seq"[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_type" TO "author_type"
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "active_admin_comments" RENAME COLUMN "admin_user_id" TO "author_id"[0m
+  [1m[35m (0.4ms)[0m  ALTER TABLE "active_admin_comments" ADD COLUMN "namespace" character varying(255)
+  [1m[36m (123.5ms)[0m  [1mCREATE INDEX "index_active_admin_comments_on_namespace" ON "active_admin_comments" ("namespace")[0m
+  [1m[35m (54.1ms)[0m  CREATE INDEX "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments" ("author_type", "author_id")
+  [1m[36m (0.6ms)[0m  [1mUPDATE active_admin_comments SET namespace='admin'[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ('20130327013924')
+  [1m[36m (20.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (2.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
