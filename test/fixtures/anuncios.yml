@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  anunciante: 
+  titulo: MyString
+  descricao: MyText
+  url_anuncio: MyString
+
+two:
+  anunciante: 
+  titulo: MyString
+  descricao: MyText
+  url_anuncio: MyString

@@ -1,4 +1,13 @@
 PortalBrazucas::Application.routes.draw do
+  resources :comentarios
+
+
+  resources :noticia
+
+
+  resources :anuncios
+
+
   resources :anunciantes
 
 

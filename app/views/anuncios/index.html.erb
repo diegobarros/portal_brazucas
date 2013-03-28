@@ -1,0 +1,29 @@
+<h1>Listing anuncios</h1>
+
+<table>
+  <tr>
+    <th>Anunciante</th>
+    <th>Titulo</th>
+    <th>Descricao</th>
+    <th>Url anuncio</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @anuncios.each do |anuncio| %>
+  <tr>
+    <td><%= anuncio.anunciante %></td>
+    <td><%= anuncio.titulo %></td>
+    <td><%= anuncio.descricao %></td>
+    <td><%= anuncio.url_anuncio %></td>
+    <td><%= link_to 'Show', anuncio %></td>
+    <td><%= link_to 'Edit', edit_anuncio_path(anuncio) %></td>
+    <td><%= link_to 'Destroy', anuncio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Anuncio', new_anuncio_path %>

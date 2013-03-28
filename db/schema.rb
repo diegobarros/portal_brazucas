@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328020657) do
+ActiveRecord::Schema.define(:version => 20130328175551) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
   add_index "anunciantes", ["endereco_id"], :name => "index_anunciantes_on_endereco_id"
   add_index "anunciantes", ["usuario_id"], :name => "index_anunciantes_on_usuario_id"
 
+  create_table "anuncios", :force => true do |t|
+    t.integer  "anunciante_id"
+    t.string   "titulo"
+    t.text     "descricao"
+    t.string   "url_anuncio"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "anuncios", ["anunciante_id"], :name => "index_anuncios_on_anunciante_id"
+
   create_table "cidades", :force => true do |t|
     t.integer  "estado_id"
     t.string   "nome",         :limit => 80, :null => false
@@ -77,6 +88,17 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
   end
 
   add_index "cidades", ["estado_id"], :name => "index_cidades_on_estado_id"
+
+  create_table "comentarios", :force => true do |t|
+    t.integer  "usuario_id"
+    t.integer  "noticia_id"
+    t.text     "texto"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comentarios", ["noticia_id"], :name => "index_comentarios_on_noticia_id"
+  add_index "comentarios", ["usuario_id"], :name => "index_comentarios_on_usuario_id"
 
   create_table "enderecos", :force => true do |t|
     t.integer  "cidade_id"
@@ -99,6 +121,15 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
   end
 
   add_index "estados", ["pais_id"], :name => "index_estados_on_pais_id"
+
+  create_table "noticia", :force => true do |t|
+    t.string   "titulo"
+    t.string   "autor"
+    t.string   "fonte"
+    t.text     "conteudo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pais", :force => true do |t|
     t.string   "nome",                :limit => 80, :null => false

@@ -2992,3 +2992,39 @@ Migrating to CreateAnunciantes (20130328020657)
   [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328020657')[0m
   [1m[35m (19.3ms)[0m  COMMIT
   [1m[36m (0.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Migrating to DeviseCreateAdminUsers (20130327013918)
+Migrating to CreateAdminNotes (20130327013923)
+Migrating to MoveAdminNotesToComments (20130327013924)
+Migrating to DeviseCreateUsuarios (20130327025006)
+Migrating to CreateVisitanteCredenciados (20130328015224)
+Migrating to CreatePais (20130328015846)
+Migrating to CreateEstados (20130328015934)
+Migrating to CreateCidades (20130328020133)
+Migrating to CreateEnderecos (20130328020313)
+Migrating to CreateAnunciantes (20130328020657)
+Migrating to CreateAnuncios (20130328174901)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (111.1ms)[0m  [1mCREATE TABLE "anuncios" ("id" serial primary key, "anunciante_id" integer, "titulo" character varying(255), "descricao" text, "url_anuncio" character varying(255), "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (46.7ms)[0m  CREATE INDEX "index_anuncios_on_anunciante_id" ON "anuncios" ("anunciante_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328174901')[0m
+  [1m[35m (20.2ms)[0m  COMMIT
+Migrating to CreateNoticia (20130328175409)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (77.1ms)[0m  CREATE TABLE "noticia" ("id" serial primary key, "titulo" character varying(255), "autor" character varying(255), "fonte" character varying(255), "conteudo" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328175409')[0m
+  [1m[35m (18.7ms)[0m  COMMIT
+Migrating to CreateComentarios (20130328175551)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (95.6ms)[0m  CREATE TABLE "comentarios" ("id" serial primary key, "usuario_id" integer, "noticia_id" integer, "texto" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (48.4ms)[0m  [1mCREATE INDEX "index_comentarios_on_usuario_id" ON "comentarios" ("usuario_id")[0m
+  [1m[35m (30.9ms)[0m  CREATE INDEX "index_comentarios_on_noticia_id" ON "comentarios" ("noticia_id")
+  [1m[36m (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ('20130328175551')[0m
+  [1m[35m (16.7ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
