@@ -1,0 +1,35 @@
+<h1>Listing anunciantes</h1>
+
+<table>
+  <tr>
+    <th>Usuario</th>
+    <th>Endereco</th>
+    <th>Nome</th>
+    <th>Razao social</th>
+    <th>Cnpj</th>
+    <th>Telefone</th>
+    <th>Url website</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @anunciantes.each do |anunciante| %>
+  <tr>
+    <td><%= anunciante.usuario %></td>
+    <td><%= anunciante.endereco %></td>
+    <td><%= anunciante.nome %></td>
+    <td><%= anunciante.razao_social %></td>
+    <td><%= anunciante.cnpj %></td>
+    <td><%= anunciante.telefone %></td>
+    <td><%= anunciante.url_website %></td>
+    <td><%= link_to 'Show', anunciante %></td>
+    <td><%= link_to 'Edit', edit_anunciante_path(anunciante) %></td>
+    <td><%= link_to 'Destroy', anunciante, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Anunciante', new_anunciante_path %>

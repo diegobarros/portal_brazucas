@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  estado: 
+  nome: MyString
+  sigla: MyString
+  area: MyString
+  populacao: MyString
+  densidade: MyString
+  altitude: MyString
+  clima: MyString
+  fuso_horario: MyString
+  url_website: MyString
+
+two:
+  estado: 
+  nome: MyString
+  sigla: MyString
+  area: MyString
+  populacao: MyString
+  densidade: MyString
+  altitude: MyString
+  clima: MyString
+  fuso_horario: MyString
+  url_website: MyString

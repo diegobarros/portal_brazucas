@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @anunciante.usuario %>
+</p>
+
+<p>
+  <b>Endereco:</b>
+  <%= @anunciante.endereco %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @anunciante.nome %>
+</p>
+
+<p>
+  <b>Razao social:</b>
+  <%= @anunciante.razao_social %>
+</p>
+
+<p>
+  <b>Cnpj:</b>
+  <%= @anunciante.cnpj %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @anunciante.telefone %>
+</p>
+
+<p>
+  <b>Url website:</b>
+  <%= @anunciante.url_website %>
+</p>
+
+
+<%= link_to 'Edit', edit_anunciante_path(@anunciante) %> |
+<%= link_to 'Back', anunciantes_path %>

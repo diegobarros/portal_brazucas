@@ -1,4 +1,10 @@
 PortalBrazucas::Application.routes.draw do
+  resources :anunciantes
+
+
+  resources :visitante_credenciados
+
+
   devise_for :usuarios
 
   get "home/index"

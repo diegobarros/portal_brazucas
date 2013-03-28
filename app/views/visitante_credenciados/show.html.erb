@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @visitante_credenciado.usuario %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @visitante_credenciado.nome %>
+</p>
+
+<p>
+  <b>Sobrenome:</b>
+  <%= @visitante_credenciado.sobrenome %>
+</p>
+
+<p>
+  <b>Sexo:</b>
+  <%= @visitante_credenciado.sexo %>
+</p>
+
+<p>
+  <b>Nascimento:</b>
+  <%= @visitante_credenciado.nascimento %>
+</p>
+
+<p>
+  <b>Telefone:</b>
+  <%= @visitante_credenciado.telefone %>
+</p>
+
+<p>
+  <b>Cpf:</b>
+  <%= @visitante_credenciado.cpf %>
+</p>
+
+
+<%= link_to 'Edit', edit_visitante_credenciado_path(@visitante_credenciado) %> |
+<%= link_to 'Back', visitante_credenciados_path %>
