@@ -3,7 +3,7 @@ class CreateAnunciantes < ActiveRecord::Migration
     create_table :anunciantes do |t|
       t.references :usuario
       t.references :endereco
-      t.string :nome
+      t.string :nome, :limit => 80, :null => false
       t.string :razao_social
       t.string :cnpj
       t.string :telefone

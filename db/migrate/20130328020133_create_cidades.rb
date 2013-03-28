@@ -2,7 +2,7 @@ class CreateCidades < ActiveRecord::Migration
   def change
     create_table :cidades do |t|
       t.references :estado
-      t.string :nome
+      t.string :nome, :limit => 80, :null => false
       t.string :sigla
       t.string :area
       t.string :populacao

@@ -49,13 +49,13 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
   create_table "anunciantes", :force => true do |t|
     t.integer  "usuario_id"
     t.integer  "endereco_id"
-    t.string   "nome"
+    t.string   "nome",         :limit => 80, :null => false
     t.string   "razao_social"
     t.string   "cnpj"
     t.string   "telefone"
     t.string   "url_website"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "anunciantes", ["endereco_id"], :name => "index_anunciantes_on_endereco_id"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
 
   create_table "cidades", :force => true do |t|
     t.integer  "estado_id"
-    t.string   "nome"
+    t.string   "nome",         :limit => 80, :null => false
     t.string   "sigla"
     t.string   "area"
     t.string   "populacao"
@@ -72,14 +72,14 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
     t.string   "clima"
     t.string   "fuso_horario"
     t.string   "url_website"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "cidades", ["estado_id"], :name => "index_cidades_on_estado_id"
 
   create_table "enderecos", :force => true do |t|
-    t.string   "cidade"
+    t.integer  "cidade_id"
     t.string   "logradouro"
     t.string   "numero"
     t.string   "complemento"
@@ -92,20 +92,20 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
 
   create_table "estados", :force => true do |t|
     t.integer  "pais_id"
-    t.string   "nome"
-    t.string   "sigla"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "nome",                    :null => false
+    t.string   "sigla",      :limit => 2
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
   end
 
   add_index "estados", ["pais_id"], :name => "index_estados_on_pais_id"
 
   create_table "pais", :force => true do |t|
-    t.string   "nome"
-    t.string   "sigla"
+    t.string   "nome",                :limit => 80, :null => false
+    t.string   "sigla",               :limit => 4
     t.string   "url_imagem_bandeira"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "usuarios", :force => true do |t|
@@ -128,14 +128,14 @@ ActiveRecord::Schema.define(:version => 20130328020657) do
 
   create_table "visitante_credenciados", :force => true do |t|
     t.integer  "usuario_id"
-    t.string   "nome"
-    t.string   "sobrenome"
+    t.string   "nome",       :limit => 75, :null => false
+    t.string   "sobrenome",  :limit => 80
     t.string   "sexo"
     t.date     "nascimento"
     t.string   "telefone"
     t.string   "cpf"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   add_index "visitante_credenciados", ["usuario_id"], :name => "index_visitante_credenciados_on_usuario_id"
