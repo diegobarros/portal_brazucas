@@ -14,9 +14,10 @@ PortalBrazucas::Application.routes.draw do
   resources :visitante_credenciados
 
 
-  devise_for :usuarios
+  devise_for :usuarios, :controllers => { :registrations => "registrations" }
 
   get "home/index"
+  get "home/tipo_conta"
 
   ActiveAdmin.routes(self)
 

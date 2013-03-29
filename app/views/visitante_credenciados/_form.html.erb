@@ -11,9 +11,18 @@
     </div>
   <% end %>
 
+	<!--
   <div class="field">
     <%= f.label :usuario %><br />
-    <%= f.text_field :usuario %>
+    
+    <label><%= current_usuario.id %></label>
+    <%= f.text_field :usuario, :value => current_usuario %>
+    
+  </div>
+ -->
+   <div class="field">
+    <%= @visitante_credenciado.usuario.id %><br />
+    
   </div>
   <div class="field">
     <%= f.label :nome %><br />

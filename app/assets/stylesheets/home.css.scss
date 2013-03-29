@@ -2,8 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #container {
-  width: 1280px;
-  height: 780px;
-  margin: 0 auto;
+  width: 1024px;
+  margin: 20px auto;
   border: 1px solid black;
+}
+
+#cabecalho-pagina-inicial {
+  padding: 20px;
+  height: 180px;
+  border: 1px solid red;
+}
+
+#menu-pagina-inicial {
+  padding: 10px;
+  height: 50px;
+  border: 1px solid red;
+}
+
+#conteudo-pagina-inicial {
+  padding: 20px;
+  height: 500px;
+  border: 1px solid red;
+}
+
+#rodape-pagina-inicial {
+  padding: 20px;
+  height: 80px;
+  border: 1px solid red;
+}
+
+#noticias-pagina-inicial {
+  width: 568px;
+  float: left;
+  padding: 20px;
+  border: 1px solid blue;
+}
+
+#painel-direito-pagina-inicial {
+  padding: 20px;
+  width: 330px;
+  float: left;
+  border: 1px solid blue;
+  
 }
