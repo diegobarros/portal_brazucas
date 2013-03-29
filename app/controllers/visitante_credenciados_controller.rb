@@ -61,7 +61,7 @@ class VisitanteCredenciadosController < InheritedResources::Base
   # PUT /visitante_credenciados/1
   # PUT /visitante_credenciados/1.json
   def update
-    @visitante_credenciado = Jogo.find(params[:id])
+    @visitante_credenciado = VisitanteCredenciado.find(params[:id])
 
     respond_to do |format|
       if @visitante_credenciado.update_attributes(params[:visitante_credenciado])
@@ -77,11 +77,11 @@ class VisitanteCredenciadosController < InheritedResources::Base
   # DELETE /visitante_credenciados/1
   # DELETE /visitante_credenciados/1.json
   def destroy
-    @visitante_credenciado = VisitanteCredenciados.find(params[:id])
+    @visitante_credenciado = VisitanteCredenciado.find(params[:id])
     @visitante_credenciado.destroy
 
     respond_to do |format|
-      format.html { redirect_to jogos_url }
+      format.html { redirect_to visitante_credenciados_url }
       format.json { head :no_content }
     end
   
